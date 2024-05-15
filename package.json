@@ -4,8 +4,7 @@
   "description": "CLI tool for parsing bundlers test results JSON and generating CSV files.",
   "main": "parseTestResults.js",
   "scripts": {
-    "start": "node parseTestResults.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node parseTestResults.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +13,7 @@
     "axios": "^1.6.8",
     "csv-writer": "^1.6.0",
     "fs": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
     "yargs": "^17.7.2"
   }
 }

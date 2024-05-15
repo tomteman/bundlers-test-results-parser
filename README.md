@@ -26,15 +26,15 @@ npm install
 To run the script, use the following command:
 
 ```sh
-node parseTestResults.js --version <version>
+node parseTestResults.js --bundlerVersion <version>
 ```
 
-- `--version` or `-v`: Version of the test results (06 or 07). Defaults to 07 if not provided.
+- `--bundlerVersion` or `-bv`: Bundler version of the test results (06 or 07). Defaults to 07 if not provided.
 
 Example:
 
 ```sh
-node parseTestResults.js --version 06
+node parseTestResults.js --bv 06
 ```
 
 This will fetch the test results JSON from the appropriate URL and generate CSV files for each bundler with test results.

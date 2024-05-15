@@ -1,25 +1,33 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
 const fetch = require('node-fetch');
 const csvWriter = require('csv-writer').createObjectCsvWriter;
 const yargs = require('yargs');
 
 const argv = yargs
-  .option('version', {
-    alias: 'v',
-    description: 'Version of the test results (06 or 07)',
+  .option('bundlerVersion', {
+    alias: 'bv',
+    description: 'Bundler version of the test results (06 or 07)',
     type: 'string',
-    choices: ['06', '07'],
-    default: '07'
+    choices: ['06', '07'],    
+    default: '07',
+    demandOption: false
   })
   .help()
   .alias('help', 'h')
   .argv;
 
-const version = argv.version;
-const url = `https://bundler-test-results.erc4337.io/v${version}/history/history.json`;
+// Ensure the version is set correctly if it's undefined
+const bundlerVersion = argv.bundlerVersion || '07';
+
+if (!['06', '07'].includes(bundlerVersion)) {
+  console.error(`Invalid bundler version: ${bundlerVersion}. Valid choices are "06" or "07".`);
+  process.exit(1);
+}
+
+const url = `https://bundler-test-results.erc4337.io/v${bundlerVersion}/history/history.json`;
+
+console.log(`Fetching test results from ${url}`);
 
 // Parse datetime function
 function parseDateTime(dateTimeString) {
@@ -139,13 +147,13 @@ function processTestResults(testResults) {
     }
 
     const writer = csvWriter({
-      path: `${bundlerName}.csv`,
+      path: `v${bundlerVersion}-${bundlerName}.csv`,
       header: header
     });
 
     writer.writeRecords(records)
       .then(() => {
-        console.log(`Successfully wrote to ${bundlerName}.csv`);
+        console.log(`Successfully wrote to v${bundlerVersion}-${bundlerName}.csv`);
       });
   }
 }
