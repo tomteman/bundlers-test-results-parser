@@ -34,6 +34,10 @@ node parseTestResults.js --bundlerVersion <version>
 Example:
 
 ```sh
+node parseTestResults.js
+```
+
+```sh
 node parseTestResults.js --bv 06
 ```
 
