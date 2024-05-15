@@ -1,0 +1,19 @@
+{
+  "name": "bundlers-test-results-parser",
+  "version": "1.0.0",
+  "description": "CLI tool for parsing bundlers test results JSON and generating CSV files.",
+  "main": "parseTestResults.js",
+  "scripts": {
+    "start": "node parseTestResults.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "csv-writer": "^1.6.0",
+    "fs": "^0.0.1-security",
+    "yargs": "^17.7.2"
+  }
+}
