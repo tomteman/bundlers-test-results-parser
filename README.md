@@ -31,7 +31,7 @@ node parseTestResults.js --bundlerVersion <version>
 
 - `--bundlerVersion` or `-bv`: Bundler version of the test results (06 or 07). Defaults to 07 if not provided.
 
-Example:
+Examples:
 
 ```sh
 node parseTestResults.js
